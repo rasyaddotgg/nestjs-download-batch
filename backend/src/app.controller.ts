@@ -36,4 +36,24 @@ export class AppController {
     const file = createReadStream(file_name);
     return new StreamableFile(file);
   }
+
+  @Get('download-format')
+  downloadFormat(@Query() body: DownloadDto) {
+    return this.appService.downloadFormat(body);
+  }
+
+  @Get('create-sheet-upload-format')
+  createSheetUploadFormat() {
+    return this.appService.uploadFormat();
+  }
+
+  @Get('create-sheet-master-data-one')
+  createSheetMasterDataOne(@Query() body: DownloadDto) {
+    return this.appService.createSheetOne(body);
+  }
+
+  @Get('create-sheet-master-data-two')
+  createSheetMasterDataTwo(@Query() body: DownloadDto) {
+    return this.appService.createSheetTwo(body);
+  }
 }

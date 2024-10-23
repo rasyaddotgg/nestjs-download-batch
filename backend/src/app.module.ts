@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Employee } from './entities/employee.entity';
 import { ExceljsService } from './exceljs.service';
+import { OrgHasPosition } from './entities/organization-has-position.entity';
 
 @Module({
   imports: [
@@ -16,8 +17,9 @@ import { ExceljsService } from './exceljs.service';
       database: 'hcms',
       autoLoadEntities: true,
       synchronize: false,
+      // logging: true,
     }),
-    TypeOrmModule.forFeature([Employee]),
+    TypeOrmModule.forFeature([Employee, OrgHasPosition]),
   ],
   controllers: [AppController],
   providers: [AppService, ExceljsService],

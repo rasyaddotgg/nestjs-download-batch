@@ -24,6 +24,7 @@ const navConfig = [
     items: [
       { title: 'Dashboard', path: PATH_DASHBOARD.one, icon: ICONS.dashboard },
       { title: 'Download', path: PATH_DASHBOARD.download, icon: ICONS.analytics },
+      { title: 'Unduh format', path: PATH_DASHBOARD.format, icon: ICONS.ecommerce },
       // {
       //   title: 'knowledge',
       //   path: '/',

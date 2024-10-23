@@ -30,4 +30,5 @@ export const PATH_DASHBOARD = {
     six: path(ROOTS_DASHBOARD, '/user/six'),
   },
   download: '/download',
+  format: '/format',
 };

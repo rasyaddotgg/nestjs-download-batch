@@ -23,5 +23,6 @@ export const PageFour = Loadable(lazy(() => import('../pages/PageFour')));
 export const PageFive = Loadable(lazy(() => import('../pages/PageFive')));
 export const PageSix = Loadable(lazy(() => import('../pages/PageSix')));
 export const DownloadPage = Loadable(lazy(() => import('../pages/DownloadPage')));
+export const FormatPage = Loadable(lazy(() => import('../pages/Format')));
 
 export const Page404 = Loadable(lazy(() => import('../pages/Page404')));

@@ -157,19 +157,29 @@ export class ExceljsService {
   // }
 
   async saveFile(workbook: Workbook, fileName: string) {
-    const tempFilename = `${os.tmpdir()}\\${fileName}`;
+    // const tempFilename = `${os.tmpdir()}\\${fileName}`;
 
     const createdFileName = await new Promise<string>((resolve, reject) => {
-      if (!fs.existsSync(tempFilename)) {
-        const createStream = fs.createWriteStream(tempFilename);
+      // if (!fs.existsSync(tempFilename)) {
+      //   const createStream = fs.createWriteStream(tempFilename);
+      //   createStream.end();
+      // }
+      if (!fs.existsSync(fileName)) {
+        const createStream = fs.createWriteStream(fileName);
         createStream.end();
       }
       // "C:\\Users\\mchmd\\AppData\\Local\\Temp\\CPM Report-193272-xN96E7rPGZVm-.xlsx"
 
+      // workbook.xlsx
+      //   .writeFile(tempFilename)
+      //   .then((_) => {
+      //     resolve(tempFilename);
+      //   })
+      //   .catch((err) => reject(err));
       workbook.xlsx
-        .writeFile(tempFilename)
+        .writeFile(fileName)
         .then((_) => {
-          resolve(tempFilename);
+          resolve(fileName);
         })
         .catch((err) => reject(err));
     });
@@ -197,5 +207,12 @@ export class ExceljsService {
     //   );
     // });
     // return createdFile;
+  }
+
+  getWorkbookForUploadFormat(headers: string[]) {
+    const workbook: Workbook = new Workbook();
+    const worksheet: Worksheet = workbook.addWorksheet('Upload Format');
+    worksheet.addRow(headers);
+    return workbook;
   }
 }

@@ -20,6 +20,7 @@ import {
   EmployeeList,
   DownloadPage,
 } from './elements';
+import Format from 'src/pages/Format';
 
 // ----------------------------------------------------------------------
 
@@ -78,6 +79,16 @@ export default function Router() {
         {
           path: '',
           element: <DownloadPage />,
+        },
+      ],
+    },
+    {
+      path: '/format',
+      element: <DashboardLayout />,
+      children: [
+        {
+          path: '',
+          element: <Format />,
         },
       ],
     },
