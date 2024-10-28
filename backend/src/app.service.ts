@@ -52,10 +52,7 @@ export class AppService {
         'code_alternatif',
       ],
       page: body.page,
-      fileName: `${crypto
-        .createHash('md5')
-        .update(new Date().toDateString())
-        .digest('hex')}.xlsx`,
+      fileName: `nama-file.xlsx`,
     };
     const file_name = await this.exceljsService.downloadExcel(dto);
     return { file_name };
@@ -134,10 +131,7 @@ export class AppService {
     ];
 
     const workbook = this.exceljsService.getWorkbookForUploadFormat(headers);
-    return await this.exceljsService.saveFile(
-      workbook,
-      'temp/upload_format.xlsx',
-    );
+    return await this.exceljsService.saveFile(workbook, 'upload_format.xlsx');
   }
 
   async createSheetOne(body: DownloadDto) {
@@ -162,10 +156,7 @@ export class AppService {
     });
 
     worksheet.addRows(rows.map((row) => Object.values(row)));
-    return await this.exceljsService.saveFile(
-      workbook,
-      'temp/upload_format.xlsx',
-    );
+    return await this.exceljsService.saveFile(workbook, 'upload_format.xlsx');
   }
 
   async createSheetTwo(body: DownloadDto) {
@@ -188,10 +179,7 @@ export class AppService {
     });
 
     worksheet.addRows(rows.map((row) => Object.values(row)));
-    return await this.exceljsService.saveFile(
-      workbook,
-      'temp/upload_format.xlsx',
-    );
+    return await this.exceljsService.saveFile(workbook, 'upload_format.xlsx');
   }
 
   async createSheetTwoOhp(body: DownloadDto) {
@@ -218,9 +206,6 @@ export class AppService {
         row.position_name,
       ]),
     );
-    return await this.exceljsService.saveFile(
-      workbook,
-      'temp/upload_format.xlsx',
-    );
+    return await this.exceljsService.saveFile(workbook, 'upload_format.xlsx');
   }
 }

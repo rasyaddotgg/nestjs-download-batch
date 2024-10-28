@@ -46,7 +46,7 @@ export class ExceljsService {
     let worksheet = workbook.addWorksheet(sheetName);
 
     if (page !== 1) {
-      workbook = await workbook.xlsx.readFile(`${os.tmpdir()}\\${fileName}`);
+      workbook = await workbook.xlsx.readFile(fileName);
       worksheet = workbook.getWorksheet(sheetName);
     }
 
@@ -158,14 +158,15 @@ export class ExceljsService {
 
   async saveFile(workbook: Workbook, fileName: string) {
     // const tempFilename = `${os.tmpdir()}\\${fileName}`;
+    const tempFilename = `temp/${fileName}`;
 
     const createdFileName = await new Promise<string>((resolve, reject) => {
       // if (!fs.existsSync(tempFilename)) {
       //   const createStream = fs.createWriteStream(tempFilename);
       //   createStream.end();
       // }
-      if (!fs.existsSync(fileName)) {
-        const createStream = fs.createWriteStream(fileName);
+      if (!fs.existsSync(tempFilename)) {
+        const createStream = fs.createWriteStream(tempFilename);
         createStream.end();
       }
       // "C:\\Users\\mchmd\\AppData\\Local\\Temp\\CPM Report-193272-xN96E7rPGZVm-.xlsx"
@@ -177,9 +178,9 @@ export class ExceljsService {
       //   })
       //   .catch((err) => reject(err));
       workbook.xlsx
-        .writeFile(fileName)
+        .writeFile(tempFilename)
         .then((_) => {
-          resolve(fileName);
+          resolve(tempFilename);
         })
         .catch((err) => reject(err));
     });
